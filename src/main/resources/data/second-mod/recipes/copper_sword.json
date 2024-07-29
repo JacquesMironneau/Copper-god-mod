@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "#",
+        "L"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:copper_block"
+        },
+        "L": {
+            "item": "minecraft:lightning_rod"
+        }
+    },
+    "result": {
+        "item": "second-mod:copper_sword",
+        "count": 1
+    },
+    "category": "CRAFTING"
+}
