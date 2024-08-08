@@ -1,0 +1,15 @@
+{
+    "item.pashmi-copper-god.copper_sword": "Épée en cuivre",
+    "advancement.pashmi-copper-god.got-copper.title": "Le début de l'addiction !",
+    "advancement.pashmi-copper-god.got-copper.description":"Obtenez du cuivre.",
+
+    "advancement.pashmi-copper-god.got-copper-stack.title": "L'addiction continue...",
+    "advancement.pashmi-copper-god.got-copper-stack.description": "Continuez l'addiction.",
+
+    "advancement.pashmi-copper-god.got-copper-block-stack.title": "Toujours plus de CUIVRE",
+    "advancement.pashmi-copper-god.got-copper-block-stack.description": "Obtenez (un peu) plus de cuivre.",
+
+    "advancement.pashmi-copper-god.got-copper-sword.title": "Serviteur fidèle",
+    "advancement.pashmi-copper-god.got-copper-sword.description": "Fabriquez une épée en cuivre."
+
+}

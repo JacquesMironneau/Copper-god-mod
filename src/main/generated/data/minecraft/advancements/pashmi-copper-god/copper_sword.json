@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:pashmi-copper-god/root",
+  "criteria": {
+    "craft_copper_sword": {
+      "conditions": {
+        "recipe_id": "pashmi-copper-god:copper_sword"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancement.pashmi-copper-god.got-copper-sword.description"
+    },
+    "icon": {
+      "item": "pashmi-copper-god:copper_sword",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancement.pashmi-copper-god.got-copper-sword.title"
+    }
+  },
+  "requirements": [
+    [
+      "craft_copper_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

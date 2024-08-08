@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:pashmi-copper-god/root",
+  "criteria": {
+    "got_copper_stack": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 64
+            },
+            "items": [
+              "minecraft:copper_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancement.pashmi-copper-god.got-copper-stack.description"
+    },
+    "icon": {
+      "item": "minecraft:copper_ingot"
+    },
+    "title": {
+      "translate": "advancement.pashmi-copper-god.got-copper-stack.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_copper_stack"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

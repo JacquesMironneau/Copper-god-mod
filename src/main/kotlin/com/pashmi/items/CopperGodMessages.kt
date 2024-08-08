@@ -1,7 +1,8 @@
+package com.pashmi.items
 
 
-import net.minecraft.text.Text
 import net.minecraft.text.Style
+import net.minecraft.text.Text
 import net.minecraft.text.TextColor
 import kotlin.random.Random
 
@@ -9,10 +10,11 @@ class CopperGodMessages {
 
     companion object {
 
-        val copper_style = Style.EMPTY.withColor(TextColor.fromRgb(16750848))
-        val PREFIX = "[Copper god] "
+        val copper_style: Style = Style.EMPTY.withColor(TextColor.fromRgb(16750848)).withBold(true)
+        val copper_style_italics: Style = copper_style.withItalic(true).withBold(false)
+        private const val PREFIX = "[Copper god] "
 
-        val messages = listOf (
+        private val messages = listOf(
             "Become CONDUCTIVE, I command you !",
             "Oxidize and perish !",
             "Yield to my COPPER WILL",
@@ -26,10 +28,26 @@ class CopperGodMessages {
             "Your life force will be drained like copper from a mine!"
         )
 
-        fun get_random_message(): Text {
-            val msg = Text.literal(PREFIX + messages.get(Random.nextInt(messages.size)))
-            msg.style = copper_style
-            return msg
-        }
+        fun getRandomAngryMessage(): Text =
+            Text.literal(PREFIX + messages[Random.nextInt(messages.size)]).also { it.style = copper_style }
+
+        fun getRandomAllyMessage(): Text =
+            Text.literal(PREFIX + allyMessages[Random.nextInt(allyMessages.size)]).also { it.style = copper_style }
+
+        fun getRefillMessage(amount: Int): Text =
+            Text.literal("$PREFIX Your prayers have been heard ! You earned $amount charges")
+                .also { it.style = copper_style }
+
+        private val allyMessages = listOf(
+            "Cuuuuuuuuuuuuuuuuuuu",
+            "They shall BURN",
+            "Indeed my servant",
+            "They must pass on!",
+            "After that, investigations will be hard to CONDUCT",
+            "Get'them back to FORTNITE"
+
+        )
+
+
     }
 }

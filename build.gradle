@@ -4,7 +4,7 @@ plugins {
 	id "org.jetbrains.kotlin.jvm" version "2.0.0"
 }
 
-version = project.mod_version
+version = project.minecraft_version + "-" + project.mod_version
 group = project.maven_group
 
 base {
@@ -23,7 +23,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"second-mod" {
+		"pashmi-copper-god" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
@@ -92,4 +92,7 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+fabricApi {
+	configureDataGeneration()
 }

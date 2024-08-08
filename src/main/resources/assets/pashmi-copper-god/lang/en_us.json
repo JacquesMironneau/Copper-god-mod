@@ -1,0 +1,20 @@
+{
+    "item.pashmi-copper-god.copper_sword": "Copper Sword",
+    "advancement.pashmi-copper-god.got-copper.title": "Addiction begins",
+    "advancement.pashmi-copper-god.got-copper.description":"Find some copper",
+
+    "advancement.pashmi-copper-god.got-copper-stack.title": "The dark addiction",
+    "advancement.pashmi-copper-god.got-copper-stack.description": "Continue your addiction",
+
+    "advancement.pashmi-copper-god.got-copper-block-stack.title": "Addiction rises",
+    "advancement.pashmi-copper-god.got-copper-block-stack.description": "Keep up the good work",
+
+    "advancement.pashmi-copper-god.got-copper-sword.title": "Faithful servant",
+    "advancement.pashmi-copper-god.got-copper-sword.description": "Craft a copper sword",
+
+    "tooltip.pashmi-copper-god.copper-sword.no-charge":"Out of power",
+    "tooltip.pashmi-copper-god.copper-sword.low-charge": "Wire them to the ground",
+    "tooltip.pashmi-copper-god.copper-sword.medium-charge": "Gotta SHOCK them",
+    "tooltip.pashmi-copper-god.copper-sword.full-charge": "Ready to CONDUCT them"
+
+}

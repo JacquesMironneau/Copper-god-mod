@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:pashmi-copper-god/got_64_copper_ingot",
+  "criteria": {
+    "got_64_copper_block": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 64
+            },
+            "items": [
+              "minecraft:copper_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancement.pashmi-copper-god.got-copper-block-stack.description"
+    },
+    "icon": {
+      "item": "minecraft:copper_block"
+    },
+    "title": {
+      "translate": "advancement.pashmi-copper-god.got-copper-block-stack.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_64_copper_block"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "minecraft:copper_ingot"
+    ]
+  },
+  "sends_telemetry_event": true
+}
