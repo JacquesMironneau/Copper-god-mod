@@ -2,9 +2,10 @@ package com.pashmi
 
 import com.pashmi.CopperGodMod.MOD_ID
 import com.pashmi.achievements.CopperOreBreakCounter
-import com.pashmi.annotations.AutoRegisterItemClass
+import com.pashmi.annotations.AutoRegisterClass
 import com.pashmi.annotations.RegisterManager
 import com.pashmi.commands.*
+import com.pashmi.effects.CopperEffect
 import com.pashmi.items.CopperItems
 import com.pashmi.items.CopperMaterial
 import com.pashmi.utils.logger
@@ -17,7 +18,7 @@ import net.minecraft.server.command.CommandManager
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-@AutoRegisterItemClass(MOD_ID)
+@AutoRegisterClass(MOD_ID)
 object CopperGodMod : ModInitializer {
     private val logger = logger()
 
@@ -46,7 +47,7 @@ object CopperGodMod : ModInitializer {
             LocateClosestCommand.register(dispatcher)
         }
 
-        RegisterManager.processAutoRegisterItems(listOf(CopperItems::class, CopperGodMod::class))
+        RegisterManager.processAutoRegisterItems(listOf(CopperItems::class, CopperGodMod::class, CopperEffect::class))
 
         CopperMaterial.initialize()
 
@@ -55,9 +56,8 @@ object CopperGodMod : ModInitializer {
 
         CopperOreBreakCounter.initializeCopperOreCounter()
 
-
     }
 
-    fun String.toModId(): Identifier? = Identifier.of(MOD_ID, this)
+    fun String.toModId(modId: String = MOD_ID): Identifier? = Identifier.of(modId, this)
 }
 

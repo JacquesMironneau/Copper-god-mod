@@ -18,7 +18,7 @@
     "tooltip.pashmi-copper-god.copper-sword.no-charge":"Déchargée",
     "tooltip.pashmi-copper-god.copper-sword.low-charge": "Connectez les au sol",
     "tooltip.pashmi-copper-god.copper-sword.medium-charge": "Prêt à les électrocuter",
-    "tooltip.pashmi-copper-god.copper-sword.full-charge": "Ils vont être conducteurs!"
-
-
+    "tooltip.pashmi-copper-god.copper-sword.full-charge": "Ils vont être conducteurs!",
+    "effect.pashmi-copper-god.fast-falling": "Chute libre",
+    "effect.pashmi-copper-god.copperized": "Cuivré"
 }

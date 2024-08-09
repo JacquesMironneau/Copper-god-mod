@@ -38,7 +38,10 @@ class CopperGodMessages {
             Text.literal("$PREFIX Your prayers have been heard ! You earned $amount charges")
                 .also { it.style = copper_style }
 
-        fun getToolRefillMessage(amount: Int): Text = Text.literal("$PREFIX Your prayers have been heard ! Mine and discover my POWER")
+        fun getToolRefillMessage(amount: Int): Text = Text.literal("$PREFIX Your prayers have been heard ! Mine and discover my POWER").also { it.style = copper_style }
+
+
+        fun getOratoryCreationMessage(): Text = Text.literal("$PREFIX Hello Mortals, submit to my will and make offerings, and perhaps I'll make you my disciples.").also { it.style = copper_style }
 
         private val allyMessages = listOf(
             "Cuuuuuuuuuuuuuuuuuuu",
