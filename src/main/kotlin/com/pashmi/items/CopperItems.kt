@@ -11,6 +11,9 @@ class CopperItems {
 
     companion object {
         @AutoRegisterItem("copper_sword")
-        var copper_sword = ThunderAppealedSword(COPPERITE, 3, -2.3f, Item.Settings())
+        var copper_sword = ThunderAppealedSword(COPPERITE, 3, -2.3f, Item.Settings(), CopperToolService)
+
+        @AutoRegisterItem("copper_pickaxe")
+        var copper_pickaxe = CopperHastyPickaxe(COPPERITE, 1, -2.8f, Item.Settings(), CopperToolService)
     }
 }

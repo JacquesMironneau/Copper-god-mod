@@ -19,10 +19,9 @@ class CopperOreBreakCounter {
 
                     val data = PacketByteBufs.create()
 
-                    data.writeInt( StateSaverAndLoader.getPlayerState(player)
-                        .apply { copperOreBroken += 1 }
-                        .copperOreBroken
-                    )
+                    val playerState = StateSaverAndLoader.getPlayerState(player)
+                    playerState.copperOreBroken += 1
+                    data.writeInt(playerState.copperOreBroken)
                     val server = world.server
                     server?.execute {
                         ServerPlayNetworking.send(server.playerManager.getPlayer(player.uuid), ID, data)

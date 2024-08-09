@@ -122,6 +122,22 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                 .parent(oneCopperAdvancement)
                 .build(consumer, "$MOD_ID/copper_sword")
 
+            val pickaxeAdvancement = Advancement.Builder.create()
+                .display(
+                    CopperItems.copper_sword,
+                    Text.translatable("advancement.pashmi-copper-god.got-copper-pickaxe.title"),
+                    Text.translatable("advancement.pashmi-copper-god.got-copper-pickaxe.description"),
+                    Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+                    AdvancementFrame.TASK,
+                    true,
+                    true,
+                    false
+                ).criterion(
+                    "craft_copper_pickaxe",
+                    RecipeCraftedCriterion.Conditions.create("copper_pickaxe".toModId())
+                )
+                .parent(oneCopperAdvancement)
+                .build(consumer, "$MOD_ID/copper_pickaxe")
         }
     }
 }

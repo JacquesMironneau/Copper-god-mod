@@ -1,5 +1,8 @@
 {
     "item.pashmi-copper-god.copper_sword": "Copper Sword",
+    "item.pashmi-copper-god.copper_pickaxe": "Copper Pickaxe",
+
+
     "advancement.pashmi-copper-god.got-copper.title": "Addiction begins",
     "advancement.pashmi-copper-god.got-copper.description":"Find some copper",
 
@@ -11,6 +14,9 @@
 
     "advancement.pashmi-copper-god.got-copper-sword.title": "Faithful servant",
     "advancement.pashmi-copper-god.got-copper-sword.description": "Craft a copper sword",
+
+    "advancement.pashmi-copper-god.got-copper-pickaxe.title": "Another pick'?",
+    "advancement.pashmi-copper-god.got-copper-pickaxe.description": "Craft a copper pickaxe",
 
     "tooltip.pashmi-copper-god.copper-sword.no-charge":"Out of power",
     "tooltip.pashmi-copper-god.copper-sword.low-charge": "Wire them to the ground",

@@ -10,6 +10,15 @@
     "advancement.pashmi-copper-god.got-copper-block-stack.description": "Obtenez (un peu) plus de cuivre.",
 
     "advancement.pashmi-copper-god.got-copper-sword.title": "Serviteur fidèle",
-    "advancement.pashmi-copper-god.got-copper-sword.description": "Fabriquez une épée en cuivre."
+    "advancement.pashmi-copper-god.got-copper-sword.description": "Fabriquez une épée en cuivre.",
+
+    "advancement.pashmi-copper-god.got-copper-pickaxe.title": "Encore une autre?",
+    "advancement.pashmi-copper-god.got-copper-pickaxe.description": "Fabriquez une pioche en cuivre.",
+
+    "tooltip.pashmi-copper-god.copper-sword.no-charge":"Déchargée",
+    "tooltip.pashmi-copper-god.copper-sword.low-charge": "Connectez les au sol",
+    "tooltip.pashmi-copper-god.copper-sword.medium-charge": "Prêt à les électrocuter",
+    "tooltip.pashmi-copper-god.copper-sword.full-charge": "Ils vont être conducteurs!"
+
 
 }
