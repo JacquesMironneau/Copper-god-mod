@@ -33,7 +33,11 @@
   "rewards": {
     "experience": 50,
     "recipes": [
-      "pashmi-copper-god:copper_sword"
+      "pashmi-copper-god:copper_sword",
+      "pashmi-copper-god:copper_pickaxe",
+      "pashmi-copper-god:copper_axe",
+      "pashmi-copper-god:copper_shovel",
+      "pashmi-copper-god:copper_hoe"
     ]
   },
   "sends_telemetry_event": true

@@ -47,7 +47,8 @@ class ThunderAppealedSword(
             MAX_CHARGE -> Text.translatable("tooltip.pashmi-copper-god.copper-sword.full-charge")
                 .also { style = style.withBold(true) }
 
-            else -> Text.literal("feuuuuuuuur")
+            else -> Text.translatable("tooltip.pashmi-copper-god.copper-sword.overcharge")
+                .also { style = style.withBold(true) }
         }
 
         txt.style = style

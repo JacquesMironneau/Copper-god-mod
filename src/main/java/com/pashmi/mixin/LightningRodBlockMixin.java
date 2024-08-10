@@ -2,6 +2,7 @@ package com.pashmi.mixin;
 
 import com.pashmi.effects.CopperEffect;
 import com.pashmi.items.CopperGodMessages;
+import com.pashmi.items.CopperItems;
 import com.pashmi.items.CopperToolService;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
@@ -58,11 +59,27 @@ public abstract class LightningRodBlockMixin extends AbstractBlock{
         if (result == null) {
             return ActionResult.PASS;
         } else {
-            if (stack.getItem() == Items.COPPER_INGOT) {
+            if (stack.getItem() == Items.COPPER_INGOT && stack.getCount() == 64) {
                 stack.setCount(0);
-                player.addStatusEffect(new StatusEffectInstance(CopperEffect.Companion.getCOPPERIZED(), 5000, 3, true, true));
+                player.addStatusEffect(new StatusEffectInstance(CopperEffect.Companion.getCOPPERIZED(), 5000, 1, false, true));
+                player.getInventory().main.stream().filter(itemStack -> CopperItems.Companion.isCopperItem(itemStack.getItem()))
+                        .forEach(itemStack -> {
+                            System.out.println("charging " + itemStack);
+                            CopperToolService.INSTANCE.setCharge(itemStack, 30);
+                        });
+
+
+                player.sendMessage(CopperGodMessages.Companion.getRefillMessage(30));
+
                 return ActionResult.SUCCESS;
+            } else if (stack.getItem() == Items.COPPER_INGOT){
+                player.sendMessage(CopperGodMessages.Companion.getMoreCopper(stack.getCount()));
+                return ActionResult.PASS;
             } else {
+                player.sendMessage(CopperGodMessages.Companion.needCopper());
+                LightningEntity thunderEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
+                thunderEntity.setPos(player.getX(), player.getY(), player.getZ());
+                world.spawnEntity(thunderEntity);
                 return ActionResult.PASS;
             }
         }
@@ -108,6 +125,7 @@ public abstract class LightningRodBlockMixin extends AbstractBlock{
             }
         }
     }
+
 
 
 

@@ -39,9 +39,13 @@ class CopperGodMessages {
                 .also { it.style = copper_style }
 
         fun getToolRefillMessage(amount: Int): Text = Text.literal("$PREFIX Your prayers have been heard ! Mine and discover my POWER").also { it.style = copper_style }
+        fun getMoreCopper(amount: Int): Text = Text.literal("$PREFIX Only $amount COPPER ? I NEED MORE").also { it.style = copper_style }
+        fun needCopper(): Text = Text.literal("$PREFIX Your offer is ridiculous. Give me something better or you will enjoy my ANGER.").also { it.style = copper_style }
 
 
         fun getOratoryCreationMessage(): Text = Text.literal("$PREFIX Hello Mortals, submit to my will and make offerings, and perhaps I'll make you my disciples.").also { it.style = copper_style }
+
+        fun getCopperSpentMessage(): Text = Text.literal("$PREFIX Enjoy a hint of my power for your miserable offering").also { it.style = copper_style }
 
         private val allyMessages = listOf(
             "Cuuuuuuuuuuuuuuuuuuu",

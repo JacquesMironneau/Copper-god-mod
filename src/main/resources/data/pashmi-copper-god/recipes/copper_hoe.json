@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "ccc",
-    " L ",
-    " L "
+    "cc",
+    "L ",
+    "L "
   ],
   "key": {
     "c": {
@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "pashmi-copper-god:copper_pickaxe",
+    "item": "pashmi-copper-god:copper_hoe",
     "count": 1
   }
 }

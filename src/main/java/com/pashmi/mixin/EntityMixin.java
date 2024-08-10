@@ -20,7 +20,7 @@ public abstract class EntityMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;damage(Lnet/minecraft/entity/damage/DamageSource;F)Z"), cancellable = true)
     private void pashmiCopperGod_onStruckByLightning(ServerWorld world, LightningEntity lightning, CallbackInfo ci) {
         // Thunderstruck are way more OP !!!
-        this.damage(world.getDamageSources().lightningBolt(), 5F);
+        this.damage(world.getDamageSources().lightningBolt(), 8F);
         ci.cancel();
     }
 }

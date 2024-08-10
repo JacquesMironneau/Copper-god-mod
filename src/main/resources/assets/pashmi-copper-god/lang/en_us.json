@@ -1,7 +1,9 @@
 {
     "item.pashmi-copper-god.copper_sword": "Copper Sword",
     "item.pashmi-copper-god.copper_pickaxe": "Copper Pickaxe",
-
+    "item.pashmi-copper-god.copper_axe": "Copper Axe",
+    "item.pashmi-copper-god.copper_shovel": "Copper Shovel",
+    "item.pashmi-copper-god.copper_hoe": "Copper Hoe",
 
     "advancement.pashmi-copper-god.got-copper.title": "Addiction begins",
     "advancement.pashmi-copper-god.got-copper.description":"Find some copper",
@@ -22,6 +24,7 @@
     "tooltip.pashmi-copper-god.copper-sword.low-charge": "Wire them to the ground",
     "tooltip.pashmi-copper-god.copper-sword.medium-charge": "Gotta SHOCK them",
     "tooltip.pashmi-copper-god.copper-sword.full-charge": "Ready to CONDUCT them",
+    "tooltip.pashmi-copper-god.copper-sword.overcharge": "Overcharged!",
 
     "effect.pashmi-copper-god.fast-falling": "Fast falling",
     "effect.pashmi-copper-god.copperized": "Under copper"

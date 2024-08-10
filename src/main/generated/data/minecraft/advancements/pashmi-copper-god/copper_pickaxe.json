@@ -14,7 +14,7 @@
       "translate": "advancement.pashmi-copper-god.got-copper-pickaxe.description"
     },
     "icon": {
-      "item": "pashmi-copper-god:copper_sword",
+      "item": "pashmi-copper-god:copper_pickaxe",
       "nbt": "{Damage:0}"
     },
     "title": {

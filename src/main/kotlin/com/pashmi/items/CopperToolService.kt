@@ -2,13 +2,13 @@ package com.pashmi.items
 
 import com.pashmi.CopperGodMod.MOD_ID
 import com.pashmi.achievements.StateSaverAndLoader
+import com.pashmi.utils.isCopperBlock
 import com.pashmi.utils.logger
+import com.pashmi.utils.repairItem
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LightningEntity
 import net.minecraft.entity.LivingEntity
-import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 import net.minecraft.item.ToolItem
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
@@ -28,17 +28,6 @@ object CopperToolService {
         return chargeLevel
     }
 
-    fun Item.isCopperBlock(): Boolean {
-        return this in listOf(
-            Items.COPPER_BLOCK,
-            Items.CUT_COPPER,
-            Items.EXPOSED_COPPER,
-            Items.EXPOSED_CUT_COPPER,
-            Items.WAXED_COPPER_BLOCK,
-            Items.WAXED_CUT_COPPER
-        )
-    }
-
     fun setCharge(stack: ItemStack, charge: Int) {
         if (charge >= 0) stack.orCreateNbt.putInt(NBT_CHARGE_LEVEL, charge)
     }
@@ -46,7 +35,7 @@ object CopperToolService {
     fun isWorthy(player: LivingEntity): Boolean {
         val copperOreBroken = StateSaverAndLoader.getPlayerState(player).copperOreBroken
         val hasMinedEnough = copperOreBroken >= WORTHINESS_LEVEL
-        logger.info("${player.name} ${player is ServerPlayerEntity } has mined $copperOreBroken, it is ${if (hasMinedEnough) "enough" else "not enough, needs $WORTHINESS_LEVEL"}")
+        logger.info("${player.name} ${player is ServerPlayerEntity} has mined $copperOreBroken, it is ${if (hasMinedEnough) "enough" else "not enough, needs $WORTHINESS_LEVEL"}")
 
         if (player is ServerPlayerEntity) {
             val advancements = player.server.advancementLoader.advancements
@@ -67,7 +56,13 @@ object CopperToolService {
         setCharge(stack, getCharge(stack) - 1)
     }
 
-    fun chargeItem(stack: ItemStack, maxCharge: Int, player: LivingEntity, world: World): Int {
+    fun chargeItem(
+        stack: ItemStack,
+        maxCharge: Int,
+        player: LivingEntity,
+        world: World,
+        repairPercent: Float = 0.2f
+    ): Int {
 
         if (getCharge(stack) == maxCharge) return 0
 
@@ -88,8 +83,7 @@ object CopperToolService {
                 setCharge(stack, clamp)
                 val item = stack.item
                 if (item is ToolItem) {
-                    val repairAmount = item.material.durability
-                    stack.damage -= (0.2 * repairAmount).toInt()
+                    repairItem(stack, item, repairPercent)
                 }
                 return clamp
             }

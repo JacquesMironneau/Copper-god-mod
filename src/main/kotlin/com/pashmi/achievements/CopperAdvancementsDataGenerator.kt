@@ -47,6 +47,10 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                     AdvancementRewards.Builder
                         .experience(50)
                         .addRecipe("copper_sword".toModId())
+                        .addRecipe("copper_pickaxe".toModId())
+                        .addRecipe("copper_axe".toModId())
+                        .addRecipe("copper_shovel".toModId())
+                        .addRecipe("copper_hoe".toModId())
                         .build()
                 )
                 .build(consumer, "$MOD_ID/root")
@@ -124,7 +128,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
 
             val pickaxeAdvancement = Advancement.Builder.create()
                 .display(
-                    CopperItems.copper_sword,
+                    CopperItems.copper_pickaxe,
                     Text.translatable("advancement.pashmi-copper-god.got-copper-pickaxe.title"),
                     Text.translatable("advancement.pashmi-copper-god.got-copper-pickaxe.description"),
                     Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
@@ -138,6 +142,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                 )
                 .parent(oneCopperAdvancement)
                 .build(consumer, "$MOD_ID/copper_pickaxe")
+
         }
     }
 }

@@ -1,53 +1,44 @@
 package com.pashmi.items
 
-import com.pashmi.utils.isOre
+import com.pashmi.utils.isSandOrClay
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.LivingEntity
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.item.PickaxeItem
+import net.minecraft.item.ShovelItem
 import net.minecraft.item.ToolMaterial
 import net.minecraft.text.Text
-import net.minecraft.util.Hand
-import net.minecraft.util.TypedActionResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-
-open class CopperHastyPickaxe(
+class CopperHastyShovel(
     material: ToolMaterial,
-    attackDamage: Int,
+    attackDamage: Float,
     attackSpeed: Float,
     settings: Settings,
-    private val service: CopperHastyMiningToolService
-) :
-    PickaxeItem(material, attackDamage, attackSpeed, settings) {
+    private val service: CopperHastyMiningToolService,
+) : ShovelItem(material, attackDamage, attackSpeed, settings) {
 
     override fun appendTooltip(
         stack: ItemStack,
         world: World?,
         tooltip: MutableList<Text>,
-        context: TooltipContext?
+        context: TooltipContext
     ) {
         super.appendTooltip(stack, world, tooltip, context)
         service.appendTooltip(stack, tooltip)
     }
 
-    override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-        super.use(world, user, hand)
-        return service.use(world, user, hand)
-    }
-
     override fun postMine(
         stack: ItemStack,
-        world: World,
+        world: World?,
         state: BlockState,
         pos: BlockPos,
         miner: LivingEntity
     ): Boolean {
         super.postMine(stack, world, state, pos, miner)
-        return service.postMine(stack, state, miner, Block::isOre)
+        return service.postMine(stack, state, miner, Block::isSandOrClay)
     }
 }
+

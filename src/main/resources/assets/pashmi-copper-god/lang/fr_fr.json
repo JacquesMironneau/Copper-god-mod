@@ -1,5 +1,9 @@
 {
     "item.pashmi-copper-god.copper_sword": "Épée en cuivre",
+    "item.pashmi-copper-god.copper_pickaxe": "Pioche en cuivre",
+    "item.pashmi-copper-god.copper_axe": "Hache en cuivre",
+    "item.pashmi-copper-god.copper_shovel": "Pelle en cuivre",
+    "item.pashmi-copper-god.copper_hoe": "Houe en cuivre",
     "advancement.pashmi-copper-god.got-copper.title": "Le début de l'addiction !",
     "advancement.pashmi-copper-god.got-copper.description":"Obtenez du cuivre.",
 
@@ -19,6 +23,8 @@
     "tooltip.pashmi-copper-god.copper-sword.low-charge": "Connectez les au sol",
     "tooltip.pashmi-copper-god.copper-sword.medium-charge": "Prêt à les électrocuter",
     "tooltip.pashmi-copper-god.copper-sword.full-charge": "Ils vont être conducteurs!",
+    "tooltip.pashmi-copper-god.copper-sword.overcharge": "Survoltée!",
+
     "effect.pashmi-copper-god.fast-falling": "Chute libre",
     "effect.pashmi-copper-god.copperized": "Cuivré"
 }

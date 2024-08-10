@@ -54,6 +54,9 @@ object CopperGodMod : ModInitializer {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
             .register { it.addAfter(Items.IRON_SWORD, CopperItems.copper_sword) }
 
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
+            .register { it.addAfter(Items.IRON_HOE, CopperItems.copper_pickaxe, CopperItems.copper_axe, CopperItems.copper_shovel, CopperItems.copper_hoe)}
+
         CopperOreBreakCounter.initializeCopperOreCounter()
 
     }
