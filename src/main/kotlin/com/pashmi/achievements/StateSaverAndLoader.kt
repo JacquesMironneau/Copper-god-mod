@@ -8,7 +8,7 @@ import net.minecraft.world.PersistentState
 import net.minecraft.world.World
 import java.util.*
 
-data class PlayerData(var copperOreBroken: Int = 0)
+data class PlayerData(val playerName: String, var copperOreBroken: Int = 0)
 
 data class PlayerHome(var x: Double = 0.0, var y: Double = 0.0, var z: Double = 0.0)
 
@@ -22,6 +22,7 @@ private const val PLAYERS_TAG = "players"
 private const val VEC3D_X_TAG = "x"
 private const val VEC3D_Y_TAG = "y"
 private const val VEC3D_Z_TAG = "z"
+private const val PLAYER_NAME_TAG = "playerName"
 
 class StateSaverAndLoader : PersistentState() {
 
@@ -43,11 +44,11 @@ class StateSaverAndLoader : PersistentState() {
             state.totalCopperOreBroken = tag.getInt(TOTAL_COPPER_ORE_BROKEN_TAG)
             val players: NbtCompound = tag.getCompound(PLAYERS_TAG)
             players.keys.forEach { key ->
-                val data = PlayerData()
-                data.copperOreBroken = players.getCompound(key).getInt(COPPER_BROKEN_TAG)
 
                 val uuid = UUID.fromString(key)
-                state.players[uuid] = data
+                state.players[uuid] = with(players.getCompound(key)) {
+                    PlayerData(getString(PLAYER_NAME_TAG), getInt(COPPER_BROKEN_TAG))
+                }
             }
 
             val playersHome: NbtCompound = tag.getCompound(PLAYER_HOMES_TAG)
@@ -70,9 +71,12 @@ class StateSaverAndLoader : PersistentState() {
 
         fun getPlayerState(player: LivingEntity): PlayerData {
             val serverState = player.world.server?.let { getServerState(it) }
-            val playerState = serverState?.players?.getOrPut(player.uuid) { PlayerData() }
-            return playerState ?: PlayerData()
+            val playerState = serverState?.players?.getOrPut(player.uuid) { PlayerData(player.name.string) }
+            return playerState ?: PlayerData(player.name.string)
         }
+
+        fun getPlayerCopper(server: MinecraftServer) = getServerState(server).players
+
 
         fun getPlayerHome(player: LivingEntity): PlayerHome {
             val serverState = player.world.server?.let { getServerState(it) }
@@ -90,6 +94,7 @@ class StateSaverAndLoader : PersistentState() {
         players.forEach { (uuid, data) ->
             val playerNbt = NbtCompound().apply {
                 putInt(COPPER_BROKEN_TAG, data.copperOreBroken)
+                putString(PLAYER_NAME_TAG, data.playerName)
             }
             playersNbt.put(uuid.toString(), playerNbt)
         }

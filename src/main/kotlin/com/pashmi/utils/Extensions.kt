@@ -6,8 +6,22 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.item.ToolItem
+import net.minecraft.text.Text
 
+fun String.toMinecraftRainbow(): String {
+    val rainbow = "c6ea395".toCharArray()
+    var colorIndex = 0
 
+    return this.map { char ->
+        val colorCode = rainbow[colorIndex % rainbow.size]
+        colorIndex++
+        "§$colorCode$char"
+    }.joinToString("", postfix = "§r§f")
+}
+
+fun String.toMinecraftCopper(bold: Boolean = true): String = if (bold) "§l§6$this$§r§f" else "§6$this$§r§f"
+
+fun String.toText(): Text = Text.literal(this)
 fun repairItem(stack: ItemStack, item: ToolItem, percent: Float) {
     val repairAmount = item.material.durability
     stack.damage -= (percent * repairAmount).toInt()

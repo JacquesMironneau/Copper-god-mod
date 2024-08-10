@@ -45,6 +45,7 @@ object CopperGodMod : ModInitializer {
             HomeCommand.register(dispatcher)
             EnderChestCommand.register(dispatcher)
             LocateClosestCommand.register(dispatcher)
+            CopperCountCommand.register(dispatcher)
         }
 
         RegisterManager.processAutoRegisterItems(listOf(CopperItems::class, CopperGodMod::class, CopperEffect::class))
