@@ -3,7 +3,9 @@
 	"package": "com.pashmi.mixin.client",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
-		"ExampleClientMixin"
+		"ExampleClientMixin",
+		"InGameHudMixin",
+		"PlayerListHudMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

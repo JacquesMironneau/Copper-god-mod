@@ -12,7 +12,7 @@ import net.minecraft.server.command.ServerCommandSource
 class CopperCountCommand {
 
     companion object {
-        private val COPPER_COUNT = "coppercount"
+        private const val COPPER_COUNT = "coppercount"
 
         private val logger = logger()
 
@@ -43,7 +43,7 @@ class CopperCountCommand {
                     separator = "\n"
                 ) { (index, value) ->
                     if (index == 0) {
-                        "§l${index + 1}. ${value.first}: ${value.second}\$§r"
+                        "§l1. ${value.first}: ${value.second}\$§r"
                     } else {
                         "${index + 1}. ${value.first}: ${value.second}"
                     }
