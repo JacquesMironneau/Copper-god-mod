@@ -1,6 +1,5 @@
 package com.pashmi.items
 
-import com.pashmi.items.CopperGodMessages.Companion.copper_style_italics
 import com.pashmi.utils.logger
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.EntityType

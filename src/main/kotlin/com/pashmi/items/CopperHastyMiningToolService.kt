@@ -1,7 +1,6 @@
 package com.pashmi.items
 
 import com.pashmi.effects.CopperEffect
-import com.pashmi.items.CopperGodMessages.Companion.copper_style_italics
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.entity.LivingEntity
@@ -75,7 +74,7 @@ class CopperHastyMiningToolService(
         var amplifier = 1
         if (miner.hasStatusEffect(CopperEffect.COPPERIZED)) amplifier = 2
 
-        val hasteBonus = StatusEffectInstance(HASTE, 200*amplifier, amplifier)
+        val hasteBonus = StatusEffectInstance(HASTE, 200 * amplifier, amplifier)
         miner.addStatusEffect(hasteBonus)
         copperToolService.decreaseCharge(stack)
             .also { miner.sendMessage(Text.literal("Using 1 stack of ${stack.toHoverableText()}")) }

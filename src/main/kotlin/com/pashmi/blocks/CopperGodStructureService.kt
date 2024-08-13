@@ -5,6 +5,7 @@ import com.pashmi.effects.CopperEffect.Companion.COPPERIZED
 import com.pashmi.items.CopperGodMessages
 import com.pashmi.items.CopperGodMessages.Companion.getMoreCopper
 import com.pashmi.items.CopperGodMessages.Companion.getOratoryCreationMessage
+import com.pashmi.items.CopperGodMessages.Companion.getOratoryDestructionMessage
 import com.pashmi.items.CopperGodMessages.Companion.getRefillMessage
 import com.pashmi.items.CopperGodMessages.Companion.needCopper
 import com.pashmi.items.CopperItems.Companion.isCopperItem
@@ -72,10 +73,7 @@ class CopperGodStructureService {
 
         private val setToSkip = setOf(Vec2d(0, 0), Vec2d(1, 0), Vec2d(0, 2), Vec2d(2, 0), Vec2d(2, 2))
 
-
         fun createOratory(world: World, patternResult: BlockPattern.Result) {
-
-            //TODO: break if not worthy ?
             for (i in 0 until patternResult.width) {
                 for (j in 0 until patternResult.height) {
                     if (Vec2d(i, j) in setToSkip) continue
@@ -119,7 +117,7 @@ class CopperGodStructureService {
                         val currentBlockPos = BlockPos(pos.x + x, pos.y + y, pos.z + z)
                         val state = CopperGodBlocks.cu_diamond.defaultState.with(
                             ORATORY_LISTENING, true)
-                        if (world.getBlockState(currentBlockPos) == state) {
+                        if (world.getBlockState(currentBlockPos) in setOf(state, Blocks.LIGHTNING_ROD.defaultState)) {
 
                             world.setBlockState(
                                 currentBlockPos,
@@ -136,19 +134,15 @@ class CopperGodStructureService {
                     }
                 }
             }
-
-        }
-
-
-        private fun updatePatternBlocks(world: World, patternResult: BlockPattern.Result) {
-            for (i in 0 until patternResult.width) {
-                for (j in 0 until patternResult.height) {
-                    val cachedBlockPosition = patternResult.translate(i, j, 0)
-                    world.updateNeighbors(cachedBlockPosition.blockPos, Blocks.AIR)
+            if (!world.isClient) {
+                world.server?.let {
+                    it.playerManager.playerList
+                        .filter { player -> player.pos.isInRange(pos.toCenterPos(), 50.0) }
+                        .forEach { player -> player.sendMessage(getOratoryDestructionMessage()) }
                 }
             }
-        }
 
+        }
 
         fun offer(
             player: PlayerEntity,

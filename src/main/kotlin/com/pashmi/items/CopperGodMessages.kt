@@ -4,61 +4,83 @@ package com.pashmi.items
 import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.text.TextColor
-import kotlin.random.Random
+
+val copper_style: Style = Style.EMPTY.withColor(TextColor.fromRgb(16750848)).withBold(true)
+val copper_style_italics: Style = copper_style.withItalic(true).withBold(false)
+
+private val CopperGodText.PREFIX: String?
+    get() = Text.translatable("pashmi-copper-god.copper-god-message.prefix").string
+
+private data class CopperGodText(val translatableKey: String, val arg: Int = -1)
+
+private fun CopperGodText.toFormattedText(textStyle: Style = copper_style): Text {
+    val translated = Text.translatable(translatableKey, arg).string
+    return Text.literal("$PREFIX${translated}").apply { style = textStyle }
+}
+
 
 class CopperGodMessages {
 
+
     companion object {
 
-        val copper_style: Style = Style.EMPTY.withColor(TextColor.fromRgb(16750848)).withBold(true)
-        val copper_style_italics: Style = copper_style.withItalic(true).withBold(false)
-        private const val PREFIX = "[Copper god] "
-
         private val messages = listOf(
-            "Become CONDUCTIVE, I command you !",
-            "Oxidize and perish !",
-            "Yield to my COPPER WILL",
-            "You are but worthless dross!",
-            "You are nothing but slag in my forge!",
-            "How insignificant you are in copper's glow!",
-            "Feel the wrath of the copper god!",
-            "Become malleable in my hands of death!",
-            "Corrosion consumes you!",
-            "Like copper exposed to acid, you dissolve!",
-            "Your life force will be drained like copper from a mine!"
+            CopperGodText("pashmi-copper-god.copper-god-message.become_conductive"),
+            CopperGodText("pashmi-copper-god.copper-god-message.oxidize_and_perish"),
+            CopperGodText("pashmi-copper-god.copper-god-message.yield_to_copper_will"),
+            CopperGodText("pashmi-copper-god.copper-god-message.worthless_dross"),
+            CopperGodText("pashmi-copper-god.copper-god-message.slag_in_forge"),
+            CopperGodText("pashmi-copper-god.copper-god-message.insignificant_in_glow"),
+            CopperGodText("pashmi-copper-god.copper-god-message.wrath_of_copper_god"),
+            CopperGodText("pashmi-copper-god.copper-god-message.malleable_in_hands"),
+            CopperGodText("pashmi-copper-god.copper-god-message.corrosion_consumes"),
+            CopperGodText("pashmi-copper-god.copper-god-message.like_copper_exposed"),
+            CopperGodText("pashmi-copper-god.copper-god-message.life_force_drained")
         )
-
-        fun getRandomAngryMessage(): Text =
-            Text.literal(PREFIX + messages[Random.nextInt(messages.size)]).also { it.style = copper_style }
-
-        fun getRandomAllyMessage(): Text =
-            Text.literal(PREFIX + allyMessages[Random.nextInt(allyMessages.size)]).also { it.style = copper_style }
-
-        fun getRefillMessage(amount: Int): Text =
-            Text.literal("$PREFIX Your prayers have been heard ! You earned $amount charges")
-                .also { it.style = copper_style }
-
-        fun getToolRefillMessage(amount: Int): Text = Text.literal("$PREFIX Your prayers have been heard ! Mine and discover my POWER").also { it.style = copper_style }
-        fun getMoreCopper(amount: Int): Text = Text.literal("$PREFIX Only $amount COPPER ? I NEED MORE").also { it.style = copper_style }
-        fun needCopper(): Text = Text.literal("$PREFIX Your offer is ridiculous. Give me something better or you will enjoy my ANGER.").also { it.style = copper_style }
-
-
-        fun getOratoryCreationMessage(): Text = Text.literal("$PREFIX Hello Mortals, submit to my will and make offerings, and perhaps I'll make you my disciples.").also { it.style = copper_style }
-
-        fun getCopperSpentMessage(): Text = Text.literal("$PREFIX Enjoy a hint of my power for your miserable offering").also { it.style = copper_style }
-
-        fun notWorthy(): Text = Text.literal("$PREFIX You fool think you are worthy to make me an offering ? Go back and get enough of the   precious metal")
 
         private val allyMessages = listOf(
-            "Cuuuuuuuuuuuuuuuuuuu",
-            "They shall BURN",
-            "Indeed my servant",
-            "They must pass on!",
-            "After that, investigations will be hard to CONDUCT",
-            "Get'them back to FORTNITE"
-
+            CopperGodText("pashmi-copper-god.copper-god-message.cuuuuuuuuuuuuuuuuuuu"),
+            CopperGodText("pashmi-copper-god.copper-god-message.they_shall_burn"),
+            CopperGodText("pashmi-copper-god.copper-god-message.indeed_my_servant"),
+            CopperGodText("pashmi-copper-god.copper-god-message.they_must_pass_on"),
+            CopperGodText("pashmi-copper-god.copper-god-message.investigations_hard_to_conduct"),
+            CopperGodText("pashmi-copper-god.copper-god-message.get_them_back_to_fortnite")
         )
 
 
+        fun getRandomAllyMessage(): Text =
+            allyMessages.random().toFormattedText()
+
+        fun getRefillMessage(amount: Int): Text =
+            CopperGodText("pashmi-copper-god.copper-god-message.prayers_heard_earned_charges", amount)
+                .toFormattedText()
+
+        fun getToolRefillMessage(amount: Int): Text =
+            CopperGodText("pashmi-copper-god.copper-god-message.prayers_heard_mine_discover", amount)
+                .toFormattedText()
+
+        fun getMoreCopper(amount: Int): Text =
+            CopperGodText("pashmi-copper-god.copper-god-message.only_amount_copper_need_more", amount)
+                .toFormattedText()
+
+        fun needCopper(): Text =
+            CopperGodText("pashmi-copper-god.copper-god-message.ridiculous_offer")
+                .toFormattedText()
+
+        fun getOratoryCreationMessage(): Text =
+            CopperGodText("pashmi-copper-god.copper-god-message.hello_mortals")
+                .toFormattedText()
+
+        fun getOratoryDestructionMessage(): Text =
+            CopperGodText("pashmi-copper-god.copper-god-message.my_presence_here_is_over")
+                .toFormattedText()
+
+        fun getCopperSpentMessage(): Text =
+            CopperGodText("pashmi-copper-god.copper-god-message.enjoy_hint_of_power")
+                .toFormattedText()
+
+        fun notWorthy(): Text =
+            CopperGodText("pashmi-copper-god.copper-god-message.fool_think_worthy")
+                .toFormattedText()
     }
 }
