@@ -7,8 +7,6 @@ import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameMode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.gen.Accessor;
@@ -38,12 +36,9 @@ public class PlayerListHudMixin {
     protected void renderCopperIcon(DrawContext context, int width, int x, int y, PlayerListEntry entry) {
         context.getMatrices().push();
         context.getMatrices().translate(0.0F, 0.0F, 100.0F);
-        context.drawTexture(COPPER_INGOT, x + width - 20,y,0,0, 8, 8, 8, 8);
+        context.drawTexture(COPPER_INGOT, x + width - 20, y, 0, 0, 8, 8, 8, 8);
         context.getMatrices().pop();
     }
-
-    @Unique
-    private final Logger logger = LoggerFactory.getLogger(PlayerListHudMixin.class);
 
     @Inject(method = "getPlayerName(Lnet/minecraft/client/network/PlayerListEntry;)Lnet/minecraft/text/Text;", at = @At("RETURN"), cancellable = true)
     private void pashmi_injectGetPlayerName(PlayerListEntry entry, CallbackInfoReturnable<Text> cir) {
@@ -61,7 +56,7 @@ public class PlayerListHudMixin {
         if (hasMinedCopper) {
             renderCopperIcon(context, width, x, y, entry);
         }
-        x = x+10;
+        x = x + 10;
     }
 
     @ModifyArg(method = "render(Lnet/minecraft/client/gui/DrawContext;ILnet/minecraft/scoreboard/Scoreboard;Lnet/minecraft/scoreboard/ScoreboardObjective;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/PlayerListHud;renderLatencyIcon(Lnet/minecraft/client/gui/DrawContext;IIILnet/minecraft/client/network/PlayerListEntry;)V"), index = 2)

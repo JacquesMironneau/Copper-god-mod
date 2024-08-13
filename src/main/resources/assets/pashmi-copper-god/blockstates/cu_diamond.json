@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "listening=false": { "model": "pashmi-copper-god:block/cu_diamond" },
+    "listening=true": { "model": "pashmi-copper-god:block/cu_diamond_charged" }
+  }
+}

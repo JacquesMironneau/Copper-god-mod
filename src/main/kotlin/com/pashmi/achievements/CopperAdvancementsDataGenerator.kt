@@ -51,6 +51,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                         .addRecipe("copper_axe".toModId())
                         .addRecipe("copper_shovel".toModId())
                         .addRecipe("copper_hoe".toModId())
+                        .addRecipe("cu_diamond".toModId())
                         .build()
                 )
                 .build(consumer, "$MOD_ID/root")

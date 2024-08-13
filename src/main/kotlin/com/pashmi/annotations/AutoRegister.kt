@@ -2,7 +2,10 @@ package com.pashmi.annotations
 
 import com.pashmi.CopperGodMod.toModId
 import com.pashmi.utils.logger
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings
+import net.minecraft.block.Block
 import net.minecraft.entity.effect.StatusEffect
+import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
@@ -28,15 +31,22 @@ class RegisterManager {
 
         private val itemsToRegister = mutableMapOf<Identifier, Item>()
         private val effectsToRegister = mutableMapOf<Identifier, StatusEffect>()
+        private val blocksToRegister = mutableMapOf<Identifier, Block>()
+
 
         private fun register(itemId: Identifier, item: Item): Item =
             Registry.register(Registries.ITEM, itemId, item).apply {
                 logger.info("Registering item $name with $itemId")
             }
 
-        private fun register(itemId: Identifier, statusEffect: StatusEffect) =
-            Registry.register(Registries.STATUS_EFFECT, itemId, statusEffect)
-                .apply { logger.info("Registering statusEffect $name with $itemId") }
+        private fun register(statusId: Identifier, statusEffect: StatusEffect) =
+            Registry.register(Registries.STATUS_EFFECT, statusId, statusEffect)
+                .apply { logger.info("Registering statusEffect $name with $statusId") }
+
+        private fun register(blockId: Identifier, block: Block): Block =
+            Registry.register(Registries.BLOCK, blockId, block).apply {
+                logger.info("Registering block $name with $blockId") }
+                .also { register(blockId, BlockItem(block, FabricItemSettings())) }
 
 
         private fun registerAnnotation(modId: String, field: KCallable<*>, instance: Any?) {
@@ -66,6 +76,7 @@ class RegisterManager {
         private fun processQueues() {
             itemsToRegister.forEach { (key, value) ->  register(key,value)}
             effectsToRegister.forEach { (key, value) ->  register(key,value)}
+            blocksToRegister.forEach { (k,v) -> register(k,v)}
         }
 
         private fun <T> enqueue(obj: T, id: String, modId: String) {
@@ -77,6 +88,7 @@ class RegisterManager {
             when (obj) {
                 is Item -> itemsToRegister.insertIfNotPresentElseLog(identifier, obj)
                 is StatusEffect -> effectsToRegister.insertIfNotPresentElseLog(identifier, obj)
+                is Block -> blocksToRegister.insertIfNotPresentElseLog(identifier, obj)
             }
         }
 

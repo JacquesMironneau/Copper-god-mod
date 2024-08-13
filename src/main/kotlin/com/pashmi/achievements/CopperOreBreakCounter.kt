@@ -20,9 +20,6 @@ class CopperOreBreakCounter {
         fun initializeCopperOreCounter() {
             ServerPlayConnectionEvents.JOIN.register { handler, sender, server ->
 
-                val playerState = StateSaverAndLoader.getPlayerState(handler.player)
-                playerState.copperOreBroken += 1
-
                 val data = PacketByteBufs.create().apply {
                     writeMap(
                         StateSaverAndLoader.getPlayerCopper(server).mapValues { (_, value) -> value.copperOreBroken },

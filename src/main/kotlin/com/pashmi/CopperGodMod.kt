@@ -4,6 +4,7 @@ import com.pashmi.CopperGodMod.MOD_ID
 import com.pashmi.achievements.CopperOreBreakCounter
 import com.pashmi.annotations.AutoRegisterClass
 import com.pashmi.annotations.RegisterManager
+import com.pashmi.blocks.CopperGodBlocks
 import com.pashmi.commands.*
 import com.pashmi.effects.CopperEffect
 import com.pashmi.items.CopperItems
@@ -12,6 +13,7 @@ import com.pashmi.utils.logger
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.ModifyEntries
 import net.minecraft.item.ItemGroups
 import net.minecraft.item.Items
 import net.minecraft.server.command.CommandManager
@@ -22,14 +24,9 @@ import net.minecraft.util.Identifier
 object CopperGodMod : ModInitializer {
     private val logger = logger()
 
-    //    @AutoRegisterItem("copper_pickaxe")
-//    val custom_item = PickaxeItem(CopperMaterial.COPPERITE, 3, 3f, Item.Settings())
     const val MOD_ID = "pashmi-copper-god"
 
     override fun onInitialize() {
-        // This code runs as soon as Minecraft is in a mod-load-ready state.
-        // However, some things (like resources) may still be uninitialized.
-        // Proceed with mild caution.
         logger.info("Hello this is $MOD_ID !")
 
         CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
@@ -48,7 +45,7 @@ object CopperGodMod : ModInitializer {
             CopperCountCommand.register(dispatcher)
         }
 
-        RegisterManager.processAutoRegisterItems(listOf(CopperItems::class, CopperGodMod::class, CopperEffect::class))
+        RegisterManager.processAutoRegisterItems(listOf(CopperItems::class, CopperGodMod::class, CopperEffect::class, CopperGodBlocks::class))
 
         CopperMaterial.initialize()
 
@@ -58,6 +55,9 @@ object CopperGodMod : ModInitializer {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
             .register { it.addAfter(Items.IRON_HOE, CopperItems.copper_pickaxe, CopperItems.copper_axe, CopperItems.copper_shovel, CopperItems.copper_hoe)}
 
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
+            .register(ModifyEntries { it.addAfter(Items.COPPER_BLOCK, CopperGodBlocks.cu_diamond) })
         CopperOreBreakCounter.initializeCopperOreCounter()
 
     }

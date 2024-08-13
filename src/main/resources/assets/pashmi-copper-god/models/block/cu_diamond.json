@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "pashmi-copper-god:block/cu_diamond"
+  }
+}

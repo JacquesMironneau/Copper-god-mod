@@ -47,6 +47,8 @@ class CopperGodMessages {
 
         fun getCopperSpentMessage(): Text = Text.literal("$PREFIX Enjoy a hint of my power for your miserable offering").also { it.style = copper_style }
 
+        fun notWorthy(): Text = Text.literal("$PREFIX You fool think you are worthy to make me an offering ? Go back and get enough of the   precious metal")
+
         private val allyMessages = listOf(
             "Cuuuuuuuuuuuuuuuuuuu",
             "They shall BURN",
