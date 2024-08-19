@@ -15,6 +15,7 @@ class CopperOreBreakCounter {
 
     companion object {
         val INITIAL_SYNC = "initial_sync".toModId()
+        val OPEN_CUSTOM_BOOK_SCREEN = "copper_book".toModId()
         val ID = Identifier(MOD_ID, "copper_ore_break_counter")
 
         fun initializeCopperOreCounter() {

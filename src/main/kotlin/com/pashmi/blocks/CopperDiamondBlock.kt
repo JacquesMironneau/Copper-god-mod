@@ -21,14 +21,16 @@ class CopperDiamondBlock(settings: Settings) : Block(settings) {
 
     init {
         defaultState = defaultState.with(ORATORY_LISTENING, false)
+            .with(ORATORY_BREAKING, false)
     }
 
     companion object {
         val ORATORY_LISTENING: BooleanProperty = BooleanProperty.of("listening")
+        val ORATORY_BREAKING: BooleanProperty = BooleanProperty.of("breaking")
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(ORATORY_LISTENING)
+        builder.add(ORATORY_LISTENING).add(ORATORY_BREAKING)
     }
 
     @Deprecated("Deprecated in Java")
@@ -65,10 +67,9 @@ class CopperDiamondBlock(settings: Settings) : Block(settings) {
         newState: BlockState,
         moved: Boolean
     ) {
+        if (newState.block == CopperGodBlocks.cu_diamond && newState.get(ORATORY_BREAKING)) return
 
-
-        if (state.block == CopperGodBlocks.cu_diamond && state.get(ORATORY_LISTENING)) {
-
+        if (state.block == CopperGodBlocks.cu_diamond && state.get(ORATORY_LISTENING) && !state.get(ORATORY_BREAKING)) {
             if (!world.isClient)
                 destroyOratory(world, pos)
         }

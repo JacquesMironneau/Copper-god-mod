@@ -35,7 +35,10 @@
     ]
   ],
   "rewards": {
-    "experience": 100
+    "experience": 100,
+    "loot": [
+      "pashmi-copper-god:items/copper_book"
+    ]
   },
   "sends_telemetry_event": true
 }

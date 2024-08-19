@@ -8,16 +8,15 @@ import net.minecraft.text.TextColor
 val copper_style: Style = Style.EMPTY.withColor(TextColor.fromRgb(16750848)).withBold(true)
 val copper_style_italics: Style = copper_style.withItalic(true).withBold(false)
 
-private val CopperGodText.PREFIX: String?
+private val PREFIX: String?
     get() = Text.translatable("pashmi-copper-god.copper-god-message.prefix").string
 
 private data class CopperGodText(val translatableKey: String, val arg: Int = -1)
 
 private fun CopperGodText.toFormattedText(textStyle: Style = copper_style): Text {
     val translated = Text.translatable(translatableKey, arg).string
-    return Text.literal("$PREFIX${translated}").apply { style = textStyle }
+    return Text.literal("§6§l$PREFIX§r${translated}")
 }
-
 
 class CopperGodMessages {
 
@@ -25,20 +24,21 @@ class CopperGodMessages {
     companion object {
 
         private val messages = listOf(
-            CopperGodText("pashmi-copper-god.copper-god-message.become_conductive"),
-            CopperGodText("pashmi-copper-god.copper-god-message.oxidize_and_perish"),
-            CopperGodText("pashmi-copper-god.copper-god-message.yield_to_copper_will"),
             CopperGodText("pashmi-copper-god.copper-god-message.worthless_dross"),
             CopperGodText("pashmi-copper-god.copper-god-message.slag_in_forge"),
-            CopperGodText("pashmi-copper-god.copper-god-message.insignificant_in_glow"),
-            CopperGodText("pashmi-copper-god.copper-god-message.wrath_of_copper_god"),
             CopperGodText("pashmi-copper-god.copper-god-message.malleable_in_hands"),
             CopperGodText("pashmi-copper-god.copper-god-message.corrosion_consumes"),
-            CopperGodText("pashmi-copper-god.copper-god-message.like_copper_exposed"),
             CopperGodText("pashmi-copper-god.copper-god-message.life_force_drained")
         )
 
         private val allyMessages = listOf(
+            CopperGodText("pashmi-copper-god.copper-god-message.malleable_in_hands"),
+            CopperGodText("pashmi-copper-god.copper-god-message.insignificant_in_glow"),
+            CopperGodText("pashmi-copper-god.copper-god-message.oxidize_and_perish"),
+            CopperGodText("pashmi-copper-god.copper-god-message.yield_to_copper_will"),
+            CopperGodText("pashmi-copper-god.copper-god-message.become_conductive"),
+            CopperGodText("pashmi-copper-god.copper-god-message.wrath_of_copper_god"),
+            CopperGodText("pashmi-copper-god.copper-god-message.like_copper_exposed"),
             CopperGodText("pashmi-copper-god.copper-god-message.cuuuuuuuuuuuuuuuuuuu"),
             CopperGodText("pashmi-copper-god.copper-god-message.they_shall_burn"),
             CopperGodText("pashmi-copper-god.copper-god-message.indeed_my_servant"),

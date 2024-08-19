@@ -30,6 +30,11 @@ class CopperHastyShovel(
         service.appendTooltip(stack, tooltip)
     }
 
+    override fun getName(stack: ItemStack): Text {
+        val txt =  super.getName(stack).string
+        return Text.literal("$txt ${service.getNameSuffix(stack)}")
+    }
+
     override fun postMine(
         stack: ItemStack,
         world: World?,

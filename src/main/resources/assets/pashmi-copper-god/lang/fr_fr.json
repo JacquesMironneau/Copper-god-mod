@@ -4,6 +4,10 @@
     "item.pashmi-copper-god.copper_axe": "Hache en cuivre",
     "item.pashmi-copper-god.copper_shovel": "Pelle en cuivre",
     "item.pashmi-copper-god.copper_hoe": "Houe en cuivre",
+    "item.pashmi-copper-god.copper_book": "Manuscrit du Dieu Cuivre",
+
+    "block.pashmi-copper-god.cu_diamond": "Diamant cuivre",
+
     "advancement.pashmi-copper-god.got-copper.title": "Le début de l'addiction !",
     "advancement.pashmi-copper-god.got-copper.description":"Obtenez du cuivre.",
 
@@ -19,6 +23,13 @@
     "advancement.pashmi-copper-god.got-copper-pickaxe.title": "Encore une autre?",
     "advancement.pashmi-copper-god.got-copper-pickaxe.description": "Fabriquez une pioche en cuivre.",
 
+    "advancement.pashmi-copper-god.got-copper-book.title": "Le Manuscrit du Dieu Cuivre",
+    "advancement.pashmi-copper-god.got-copper-book.description": "Fabriquez le manuscrit.",
+
+    "advancement.pashmi-copper-god.got-cu-diamond.title": "Le meilleur alliage",
+    "advancement.pashmi-copper-god.got-cu-diamond.description": "Fabriquez du Diamant Cuivre.",
+
+
     "tooltip.pashmi-copper-god.copper-sword.no-charge":"Déchargée",
     "tooltip.pashmi-copper-god.copper-sword.low-charge": "Connectez les au sol",
     "tooltip.pashmi-copper-god.copper-sword.medium-charge": "Prêt à les électrocuter",
@@ -26,5 +37,52 @@
     "tooltip.pashmi-copper-god.copper-sword.overcharge": "Survoltée!",
 
     "effect.pashmi-copper-god.fast-falling": "Chute libre",
-    "effect.pashmi-copper-god.copperized": "Cuivré"
+    "effect.pashmi-copper-god.copperized": "Cuivré",
+
+    "pashmi-copper-god.copper-god-message.prefix": "<Dieu du cuivre> ",
+    "pashmi-copper-god.copper-god-message.become_conductive": "Deviens CONDUCTEUR, je te l'ORDONNE !",
+    "pashmi-copper-god.copper-god-message.oxidize_and_perish": "Oxyde-toi et péris !",
+    "pashmi-copper-god.copper-god-message.yield_to_copper_will": "Soumets-toi à ma VOLONTÉ DE CUIVRE",
+    "pashmi-copper-god.copper-god-message.worthless_dross": "Tu n'es que de la scorie sans valeur !",
+    "pashmi-copper-god.copper-god-message.slag_in_forge": "Tu n'es que poussière dans ma forge !",
+    "pashmi-copper-god.copper-god-message.insignificant_in_glow": "Comme tu es insignifiant face à la lueur du cuivre !",
+    "pashmi-copper-god.copper-god-message.wrath_of_copper_god": "Ressens la colère du Dieu du CUIVRE !",
+    "pashmi-copper-god.copper-god-message.malleable_in_hands": "Deviens malléable tel métal dans ma forge !",
+    "pashmi-copper-god.copper-god-message.corrosion_consumes": "Que la corrosion te consume !",
+    "pashmi-copper-god.copper-god-message.like_copper_exposed": "Dissous-toi, tel du cuivre exposé à l'acide !",
+    "pashmi-copper-god.copper-god-message.life_force_drained": "Ta force vitale sera drainée comme le cuivre d'une mine !",
+    "pashmi-copper-god.copper-god-message.cuuuuuuuuuuuuuuuuuuu": "Cuuuuuuuuuuuuuuuuuuu",
+    "pashmi-copper-god.copper-god-message.they_shall_burn": "Ils BRULERONT",
+    "pashmi-copper-god.copper-god-message.indeed_my_servant": "Bien, mon serviteur",
+    "pashmi-copper-god.copper-god-message.they_must_pass_on": "Ils doivent disparaître !",
+    "pashmi-copper-god.copper-god-message.investigations_hard_to_conduct": "Il faut les CONDUIRE au désespoir !",
+    "pashmi-copper-god.copper-god-message.get_them_back_to_fortnite": "Renvoyez-les sur FORTNITE",
+    "pashmi-copper-god.copper-god-message.prayers_heard_earned_charges": "Vos prières ont été entendues ! Vous avez gagné %d éclats de mon pouvoir",
+    "pashmi-copper-god.copper-god-message.prayers_heard_mine_discover": "Vos prières ont été entendues ! Exploitez %d éclats de mon POUVOIR",
+    "pashmi-copper-god.copper-god-message.only_amount_copper_need_more": "Seulement %d CUIVRE ? IL M'EN FAUT PLUS",
+    "pashmi-copper-god.copper-god-message.ridiculous_offer": "Votre offre est ridicule. Donnez-moi quelque chose de mieux ou vous connaîtrez ma COLÈRE.",
+    "pashmi-copper-god.copper-god-message.hello_mortals": "Bonjour Mortels, soumettez-vous à ma volonté et faites des offrandes, et je ferais de vous mes disciples.",
+    "pashmi-copper-god.copper-god-message.my_presence_here_is_over": "Ma présence ici est terminée",
+    "pashmi-copper-god.copper-god-message.enjoy_hint_of_power": "Profitez d'un aperçu de mon pouvoir pour votre misérable offrande",
+    "pashmi-copper-god.copper-god-message.fool_think_worthy": "Vous, imbécile, pensez être digne de me faire une offrande ? Retournez collecter suffisamment du métal le plus précieux",
+    "pashmi-copper-god.copper-god-message.consuming_stack": "Consomation d'une charge de votre ",
+
+    "pashmi-copper-god.book-first_1": "Offrez votre âme au §6§lDieu Cuivre§r en 3 étapes faciles:",
+    "pashmi-copper-god.book-first_2": "1) Fabriquez un Diamant de Cuivre",
+    "pashmi-copper-god.book-first_3": "2) Créez un oratoire du dieu Cuivre (Page 2)",
+    "pashmi-copper-god.book-first_4": "3) §mSacrifiez votre âme§r Profitez du vrai pouvoir du §6§lCUIVRE§r",
+    "pashmi-copper-god.book-first_5": "4) §khellolol",
+
+    "pashmi-copper-god.book-second_1": "Comment créer un oratoire du cuivre :",
+    "pashmi-copper-god.book-second_2": "- 4 Diamants de Cuivre (C)",
+    "pashmi-copper-god.book-second_3": "- Un paratonnerre (T)",
+    "pashmi-copper-god.book-second_4": "Placez-les dans le monde comme suit :",
+    "pashmi-copper-god.book-second_5": "            T",
+    "pashmi-copper-god.book-second_6": "           CCC",
+    "pashmi-copper-god.book-second_7": "            C",
+    "pashmi-copper-god.book-second_8": "Comme vous l'auriez fait pour un minable golem de fer",
+
+    "pashmi-copper-god.book-third_1": "Avec l'oratoire, vous pouvez maintenant communiquer avec le dieu §6§lCuivre§r.\n\nFaites une offrande en utilisant du cuivre sur lui, attention à ne pas utiliser d'autre impureté..."
+
+
 }

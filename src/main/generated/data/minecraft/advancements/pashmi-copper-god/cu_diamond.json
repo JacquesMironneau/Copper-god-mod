@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:pashmi-copper-god/got_64_copper_ingot",
+  "criteria": {
+    "craft_cu_diamond": {
+      "conditions": {
+        "recipe_id": "pashmi-copper-god:cu_diamond"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancement.pashmi-copper-god.got-cu-diamond.description"
+    },
+    "icon": {
+      "item": "pashmi-copper-god:cu_diamond"
+    },
+    "title": {
+      "translate": "advancement.pashmi-copper-god.got-cu-diamond.title"
+    }
+  },
+  "requirements": [
+    [
+      "craft_cu_diamond"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "pashmi-copper-god:items/copper_ingot_stack"
+    ]
+  },
+  "sends_telemetry_event": true
+}

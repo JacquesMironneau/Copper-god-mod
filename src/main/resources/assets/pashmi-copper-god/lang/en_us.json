@@ -4,6 +4,7 @@
     "item.pashmi-copper-god.copper_axe": "Copper Axe",
     "item.pashmi-copper-god.copper_shovel": "Copper Shovel",
     "item.pashmi-copper-god.copper_hoe": "Copper Hoe",
+    "item.pashmi-copper-god.copper_book": "Copper God Manuscript",
 
     "block.pashmi-copper-god.cu_diamond": "Cu Diamond",
 
@@ -22,6 +23,14 @@
     "advancement.pashmi-copper-god.got-copper-pickaxe.title": "Another pick'?",
     "advancement.pashmi-copper-god.got-copper-pickaxe.description": "Craft a copper pickaxe",
 
+    "advancement.pashmi-copper-god.got-copper-book.title": "The Copper God Manuscript",
+    "advancement.pashmi-copper-god.got-copper-book.description": "Craft the Copper Manuscript",
+
+    "advancement.pashmi-copper-god.got-cu-diamond.title": "Copper + Diamond = Copper Diamond!",
+    "advancement.pashmi-copper-god.got-cu-diamond.description": "Craft Copper Diamond",
+
+
+
     "tooltip.pashmi-copper-god.copper-sword.no-charge":"Out of power",
     "tooltip.pashmi-copper-god.copper-sword.low-charge": "Wire them to the ground",
     "tooltip.pashmi-copper-god.copper-sword.medium-charge": "Gotta SHOCK them",
@@ -31,7 +40,7 @@
     "effect.pashmi-copper-god.fast-falling": "Fast falling",
     "effect.pashmi-copper-god.copperized": "Under copper",
 
-    "pashmi-copper-god.copper-god-message.prefix": "[Copper god] ",
+    "pashmi-copper-god.copper-god-message.prefix": "<Copper god> ",
     "pashmi-copper-god.copper-god-message.become_conductive": "Become CONDUCTIVE, I command you !",
     "pashmi-copper-god.copper-god-message.oxidize_and_perish": "Oxidize and perish !",
     "pashmi-copper-god.copper-god-message.yield_to_copper_will": "Yield to my COPPER WILL",
@@ -49,13 +58,32 @@
     "pashmi-copper-god.copper-god-message.they_must_pass_on": "They must pass on!",
     "pashmi-copper-god.copper-god-message.investigations_hard_to_conduct": "After that, investigations will be hard to CONDUCT",
     "pashmi-copper-god.copper-god-message.get_them_back_to_fortnite": "Get'them back to FORTNITE",
-    "pashmi-copper-god.copper-god-message.prayers_heard_earned_charges": "Your prayers have been heard ! You earned %d charges",
+    "pashmi-copper-god.copper-god-message.prayers_heard_earned_charges": "Your prayers have been heard ! You earned %d shard of my power",
     "pashmi-copper-god.copper-god-message.prayers_heard_mine_discover": "Your prayers have been heard ! Mine with %d shards of my POWER",
     "pashmi-copper-god.copper-god-message.only_amount_copper_need_more": "Only %d COPPER ? I NEED MORE",
     "pashmi-copper-god.copper-god-message.ridiculous_offer": "Your offer is ridiculous. Give me something better or you will enjoy my ANGER.",
     "pashmi-copper-god.copper-god-message.hello_mortals": "Hello Mortals, submit to my will and make offerings, and perhaps I'll make you my disciples.",
     "pashmi-copper-god.copper-god-message.my_presence_here_is_over": "My presence here is over",
     "pashmi-copper-god.copper-god-message.enjoy_hint_of_power": "Enjoy a hint of my power for your miserable offering",
-    "pashmi-copper-god.copper-god-message.fool_think_worthy": "You fool think you are worthy to make me an offering ? Go back and get enough of the precious metal"
+    "pashmi-copper-god.copper-god-message.fool_think_worthy": "You fool think you are worthy to make me an offering ? Go back and get enough of the precious metal",
+
+    "pashmi-copper-god.copper-god-message.consuming_stack": "Consuming 1 stack of ",
+
+    "pashmi-copper-god.book-first_1": "Offer your soul to the §6§lCopper god§r in 3 easy steps:",
+    "pashmi-copper-god.book-first_2": "1) Craft some Cu Diamond",
+    "pashmi-copper-god.book-first_3": "2), Create a copper god oratory (Page 2)",
+    "pashmi-copper-god.book-first_4": "3) §mSell your soul§r Enjoy the true power of §6§lCOPPER§r",
+    "pashmi-copper-god.book-first_5": "4) §khellolol",
+
+    "pashmi-copper-god.book-second_1": "How to create a copper oratory:",
+    "pashmi-copper-god.book-second_2": "- 4 Cu Diamonds (C)",
+    "pashmi-copper-god.book-second_3": "- One thunderbolt (T)",
+    "pashmi-copper-god.book-second_4": "Place them in the world as follows:",
+    "pashmi-copper-god.book-second_5": "            T",
+    "pashmi-copper-god.book-second_6": "           CCC",
+    "pashmi-copper-god.book-second_7": "            C",
+    "pashmi-copper-god.book-second_8": "As you would have done for a shabby iron golem",
+
+    "pashmi-copper-god.book-third_1": "With the oratory, you can now communicate with the §6§lCopper god§r.\n\nMake an offering by using copper on him, beware to not use any other impurity..."
 
 }

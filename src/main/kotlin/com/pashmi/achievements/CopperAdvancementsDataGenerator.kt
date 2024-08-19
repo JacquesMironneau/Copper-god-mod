@@ -2,6 +2,7 @@ package com.pashmi.achievements
 
 import com.pashmi.CopperGodMod.MOD_ID
 import com.pashmi.CopperGodMod.toModId
+import com.pashmi.blocks.CopperGodBlocks
 import com.pashmi.items.CopperItems
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
@@ -45,13 +46,14 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                 )
                 .rewards(
                     AdvancementRewards.Builder
-                        .experience(50)
+                        .experience(20)
                         .addRecipe("copper_sword".toModId())
                         .addRecipe("copper_pickaxe".toModId())
                         .addRecipe("copper_axe".toModId())
                         .addRecipe("copper_shovel".toModId())
                         .addRecipe("copper_hoe".toModId())
                         .addRecipe("cu_diamond".toModId())
+                        .addRecipe("copper_book".toModId())
                         .build()
                 )
                 .build(consumer, "$MOD_ID/root")
@@ -78,7 +80,9 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                 )
                 .rewards(
                     AdvancementRewards.Builder
-                        .experience(100).build()
+                        .experience(50)
+                        .addLoot(Identifier("pashmi-copper-god:items/copper_book"))
+                        .build()
                 )
                 .parent(oneCopperAdvancement)
                 .build(consumer, "$MOD_ID/got_64_copper_ingot")
@@ -104,7 +108,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                 )
                 .rewards(
                     AdvancementRewards.Builder
-                        .loot(Identifier("minecraft", "copper_ingot"))
+                        .loot(Identifier("pashmi-copper-god:items/copper_ingot_stack"))
                 )
                 .parent(oneStackOfCopperAdvancement)
                 .build(consumer, "$MOD_ID/got_64_copper_block")
@@ -143,6 +147,28 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                 )
                 .parent(oneCopperAdvancement)
                 .build(consumer, "$MOD_ID/copper_pickaxe")
+
+
+            val cuDiamondAdvancement = Advancement.Builder.create()
+                .display(
+                    CopperGodBlocks.cu_diamond,
+                    Text.translatable("advancement.pashmi-copper-god.got-cu-diamond.title"),
+                    Text.translatable("advancement.pashmi-copper-god.got-cu-diamond.description"),
+                    Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+                    AdvancementFrame.TASK,
+                    true,
+                    true,
+                    false
+                ).criterion(
+                    "craft_cu_diamond",
+                    RecipeCraftedCriterion.Conditions.create("cu_diamond".toModId())
+                ).rewards(
+                    AdvancementRewards.Builder
+                        .loot(Identifier("pashmi-copper-god:items/copper_ingot_stack"))
+                )
+                .parent(oneStackOfCopperAdvancement)
+                .build(consumer, "$MOD_ID/cu_diamond")
+
 
         }
     }

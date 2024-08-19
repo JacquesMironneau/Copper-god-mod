@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:loot_table",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pashmi-copper-god:copper_book",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

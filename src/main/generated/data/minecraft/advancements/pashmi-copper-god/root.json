@@ -37,7 +37,9 @@
       "pashmi-copper-god:copper_pickaxe",
       "pashmi-copper-god:copper_axe",
       "pashmi-copper-god:copper_shovel",
-      "pashmi-copper-god:copper_hoe"
+      "pashmi-copper-god:copper_hoe",
+      "pashmi-copper-god:cu_diamond",
+      "pashmi-copper-god:copper_book"
     ]
   },
   "sends_telemetry_event": true

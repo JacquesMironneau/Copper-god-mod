@@ -58,6 +58,11 @@ class ThunderAppealedSword(
 
     }
 
+    override fun getName(stack: ItemStack): Text {
+        val charge = copperToolService.getCharge(stack)
+        val txt =  super.getName(stack).string
+        return Text.literal("$txt ${if (charge == 0) "" else "($charge)"}")
+    }
 
     override fun postHit(stack: ItemStack, target: LivingEntity, attacker: LivingEntity): Boolean {
         super.postHit(stack, target, attacker)

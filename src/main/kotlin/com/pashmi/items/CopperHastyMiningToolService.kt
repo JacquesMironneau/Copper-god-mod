@@ -18,7 +18,7 @@ import net.minecraft.world.World
 class CopperHastyMiningToolService(
     private val copperToolService: CopperToolService
 ) {
-    val MAX_CHARGE = 10
+    private val MAX_CHARGE = 10
 
     fun appendTooltip(
         stack: ItemStack,
@@ -76,8 +76,14 @@ class CopperHastyMiningToolService(
 
         val hasteBonus = StatusEffectInstance(HASTE, 200 * amplifier, amplifier)
         miner.addStatusEffect(hasteBonus)
+        val txt = "${Text.translatable("pashmi-copper-god.copper-god-message.consuming_stack").string}§6${Text.translatable(stack.translationKey).string}"
         copperToolService.decreaseCharge(stack)
-            .also { miner.sendMessage(Text.literal("Using 1 stack of ${stack.toHoverableText()}")) }
+            .also { miner.sendMessage(Text.literal(txt)) }
         return true
+    }
+
+    fun getNameSuffix(itemStack: ItemStack): String {
+        val charge = copperToolService.getCharge(itemStack)
+        return if (charge == 0) "" else "($charge)"
     }
 }

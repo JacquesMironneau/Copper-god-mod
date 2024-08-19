@@ -1,5 +1,6 @@
 package com.pashmi.blocks
 
+import com.pashmi.blocks.CopperDiamondBlock.Companion.ORATORY_BREAKING
 import com.pashmi.blocks.CopperDiamondBlock.Companion.ORATORY_LISTENING
 import com.pashmi.effects.CopperEffect.Companion.COPPERIZED
 import com.pashmi.items.CopperGodMessages
@@ -11,6 +12,7 @@ import com.pashmi.items.CopperGodMessages.Companion.needCopper
 import com.pashmi.items.CopperItems.Companion.isCopperItem
 import com.pashmi.items.CopperToolService
 import com.pashmi.items.CopperToolService.setCharge
+import com.pashmi.utils.repairItem
 import net.minecraft.block.Block
 import net.minecraft.block.Block.dropStack
 import net.minecraft.block.Block.getRawIdFromState
@@ -24,9 +26,12 @@ import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
+import net.minecraft.item.ToolItem
 import net.minecraft.predicate.block.BlockStatePredicate
 import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
+import net.minecraft.util.math.Direction.*
 import net.minecraft.world.World
 import net.minecraft.world.WorldEvents
 import java.util.function.Predicate
@@ -109,36 +114,131 @@ class CopperGodStructureService {
             }
         }
 
-        fun destroyOratory(world: World, pos: BlockPos) {
-            val range = (-2..2)
-            for (x in range) {
-                for (y in range) {
-                    for (z in range) {
-                        val currentBlockPos = BlockPos(pos.x + x, pos.y + y, pos.z + z)
-                        val state = CopperGodBlocks.cu_diamond.defaultState.with(
-                            ORATORY_LISTENING, true)
-                        if (world.getBlockState(currentBlockPos) in setOf(state, Blocks.LIGHTNING_ROD.defaultState)) {
+        private fun Block.isCuDiamond(): Boolean = this == CopperGodBlocks.cu_diamond
 
-                            world.setBlockState(
-                                currentBlockPos,
-                                Blocks.AIR.defaultState,
-                                Block.NOTIFY_ALL
-                            )
-                            world.syncWorldEvent(
-                                WorldEvents.BLOCK_BROKEN,
-                                currentBlockPos,
-                                getRawIdFromState(state)
-                            )
-                            dropStack(world, currentBlockPos, state.block.asItem().defaultStack)
-                        }
-                    }
+        private fun processDirection(world: World, pos: BlockPos): Direction {
+            return listOf(NORTH, SOUTH, EAST, WEST)
+                .firstOrNull { direction -> world.getBlockState(pos.add(direction.vector)).block.isCuDiamond() } ?: DOWN
+        }
+
+        private fun breakOnlyOratory(world: World, pos: BlockPos): Boolean {
+            val cuDiamondState = CopperGodBlocks.cu_diamond.defaultState.with(
+                ORATORY_LISTENING, true
+            )
+
+            val state = world.getBlockState(pos)
+            if (state in setOf(cuDiamondState, Blocks.LIGHTNING_ROD.defaultState)) {
+
+                world.setBlockState(
+                    pos,
+                    CopperGodBlocks.cu_diamond.defaultState.with(ORATORY_BREAKING, true),
+                    Block.NOTIFY_LISTENERS
+                )
+                world.setBlockState(
+                    pos,
+                    Blocks.AIR.defaultState,
+                    Block.NOTIFY_LISTENERS
+                )
+                world.syncWorldEvent(
+                    WorldEvents.BLOCK_BROKEN,
+                    pos,
+                    getRawIdFromState(state)
+                )
+                dropStack(world, pos, state.block.asItem().defaultStack)
+                return true
+            }
+            return false
+        }
+
+        private fun breakFromSide(world: World, pos: BlockPos, directionToMiddle: Direction): Boolean {
+            return breakOnlyOratory(world, pos.add(directionToMiddle.vector)) &&
+                    breakOnlyOratory(world, pos.add(directionToMiddle.vector.add(UP.vector))) &&
+                    breakOnlyOratory(world, pos.add(directionToMiddle.vector.add(DOWN.vector))) &&
+                    breakOnlyOratory(world, pos.add(directionToMiddle.vector.multiply(2)))
+
+        }
+
+        private fun breakFromCenter(world: World, pos: BlockPos, direction: Direction): Boolean {
+
+            val up = breakOnlyOratory(world, pos.add(UP.vector))
+            val down = breakOnlyOratory(world, pos.add(DOWN.vector))
+
+            if (direction == NORTH || direction == SOUTH) {
+                return up && down && breakOnlyOratory(world, pos.add(NORTH.vector)) &&
+                        breakOnlyOratory(world, pos.add(SOUTH.vector))
+            } else if (direction == WEST || direction == EAST) {
+                return up && down && breakOnlyOratory(world, pos.add(WEST.vector)) &&
+                        breakOnlyOratory(world, pos.add(EAST.vector))
+            }
+            return false
+        }
+
+        private fun breakFromTop(world: World, pos: BlockPos, direction: Direction): Boolean {
+            val down = breakOnlyOratory(world, pos.add(DOWN.vector))
+            val down2 = breakOnlyOratory(world, pos.add(DOWN.vector.multiply(2)))
+
+            if (direction == NORTH || direction == SOUTH) {
+                return down2 && down && breakOnlyOratory(world, pos.add(NORTH.vector).add(DOWN.vector)) &&
+                        breakOnlyOratory(world, pos.add(SOUTH.vector).add(DOWN.vector))
+            } else if (direction == WEST || direction == EAST) {
+                return down2 && down && breakOnlyOratory(world, pos.add(WEST.vector).add(DOWN.vector)) &&
+                        breakOnlyOratory(world, pos.add(EAST.vector).add(DOWN.vector))
+            }
+            return false
+
+        }
+
+
+        private fun breakFromBottom(world: World, pos: BlockPos, direction: Direction): Boolean {
+            val up = breakOnlyOratory(world, pos.add(UP.vector))
+            val up2 = breakOnlyOratory(world, pos.add(UP.vector.multiply(2)))
+
+            if (direction == NORTH || direction == SOUTH) {
+                return up && up2 && breakOnlyOratory(world, pos.add(NORTH.vector.add(UP.vector))) &&
+                        breakOnlyOratory(world, pos.add(SOUTH.vector.add(UP.vector)))
+            } else if (direction == WEST || direction == EAST) {
+                return up && up2 && breakOnlyOratory(world, pos.add(WEST.vector).add(UP.vector)) &&
+                        breakOnlyOratory(world, pos.add(EAST.vector).add(UP.vector))
+            }
+
+            return false
+        }
+
+        private fun discoverAndBreakOratory(world: World, pos: BlockPos): Boolean {
+
+            val block = world.getBlockState(pos).block
+            if (block == Blocks.LIGHTNING_ROD) {
+                val directionToMiddle = processDirection(world, pos.add(DOWN.vector))
+                return breakFromTop(world, pos, directionToMiddle)
+            }
+
+            val above = world.getBlockState(pos.add(UP.vector))
+
+            return when (above.block) {
+                CopperGodBlocks.cu_diamond -> {
+                    breakFromBottom(world, pos, processDirection(world, pos.add(UP.vector)))
+                }
+
+                Blocks.LIGHTNING_ROD -> {
+                    breakFromCenter(world, pos, processDirection(world, pos))
+                }
+
+                else -> {
+                    val directionToMiddle = processDirection(world, pos)
+                    breakFromSide(world, pos, directionToMiddle)
                 }
             }
-            if (!world.isClient) {
-                world.server?.let {
-                    it.playerManager.playerList
-                        .filter { player -> player.pos.isInRange(pos.toCenterPos(), 50.0) }
-                        .forEach { player -> player.sendMessage(getOratoryDestructionMessage()) }
+        }
+
+
+        fun destroyOratory(world: World, pos: BlockPos) {
+            if (discoverAndBreakOratory(world, pos)) {
+                if (world.isClient.not()) {
+                    world.server?.let {
+                        it.playerManager.playerList
+                            .filter { player -> player.pos.isInRange(pos.toCenterPos(), 50.0) }
+                            .forEach { player -> player.sendMessage(getOratoryDestructionMessage()) }
+                    }
                 }
             }
 
@@ -165,15 +265,15 @@ class CopperGodStructureService {
                 return ActionResult.FAIL
             }
 
-
-
             if (stack.item === Items.COPPER_INGOT && stack.count == 64) {
                 stack.count = 0
-                player.addStatusEffect(StatusEffectInstance(COPPERIZED, 5000, 1, false, true))
+                player.addStatusEffect(StatusEffectInstance(COPPERIZED, 5000, 2, false, true))
                 player.inventory.main.stream().filter { itemStack -> isCopperItem(itemStack.item) }
                     .forEach { itemStack ->
                         println("charging $itemStack")
                         setCharge(itemStack, 30)
+                        val item = itemStack.item
+                        if (item is ToolItem) repairItem(itemStack, item, 0.4f)
                     }
 
                 player.sendMessage(getRefillMessage(30))

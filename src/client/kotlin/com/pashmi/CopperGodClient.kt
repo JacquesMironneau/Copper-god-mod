@@ -2,6 +2,7 @@ package com.pashmi
 
 import com.pashmi.achievements.CopperOreBreakCounter
 import com.pashmi.achievements.CopperOreBreakCounter.Companion.INITIAL_SYNC
+import com.pashmi.achievements.CopperOreBreakCounter.Companion.OPEN_CUSTOM_BOOK_SCREEN
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketSender
@@ -39,6 +40,15 @@ object CopperGodClient : ClientModInitializer {
                         copperRegistry.put(k, v)
                     }
                 }
+            }
+        }
+
+        ClientPlayNetworking.registerGlobalReceiver(
+            OPEN_CUSTOM_BOOK_SCREEN
+        ) { client: MinecraftClient, handler: ClientPlayNetworkHandler, buf: PacketByteBuf, responseSender: PacketSender ->
+            val target = buf.readItemStack()
+            client.execute {
+                client.setScreen(CustomBookScreen(target))
             }
         }
     }

@@ -43,8 +43,13 @@ fun Item.isCopperItem() = this in listOf(Items.COPPER_INGOT, Items.RAW_COPPER)
 fun Block.isOre() =
     this in listOf(Blocks.COPPER_ORE, Blocks.COAL_ORE, Blocks.IRON_ORE, Blocks.RAW_IRON_BLOCK, Blocks.GOLD_ORE)
 
-fun Block.isMelonOrPumpkin() =
-    this in listOf(Blocks.MELON, Blocks.PUMPKIN)
+fun Block.isMelonOrPumpkinOrLog() =
+    this in listOf(
+        Blocks.MELON, Blocks.PUMPKIN,
+        Blocks.OAK_LOG, Blocks.BIRCH_LOG, Blocks.DARK_OAK_LOG,
+        Blocks.ACACIA_LOG, Blocks.JUNGLE_LOG, Blocks.SPRUCE_LOG, Blocks.MANGROVE_LOG,
+        Blocks.CHERRY_LOG
+    )
 
 fun Block.isSandOrClay() =
     this in listOf(Blocks.SAND, Blocks.RED_SAND, Blocks.SOUL_SAND, Blocks.CLAY)

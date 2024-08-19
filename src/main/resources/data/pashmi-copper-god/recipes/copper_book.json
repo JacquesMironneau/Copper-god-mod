@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#c"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:book"
+    },
+    "c": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "pashmi-copper-god:copper_book",
+    "count": 1
+  }
+}

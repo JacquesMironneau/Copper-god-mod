@@ -35,6 +35,11 @@ open class CopperHastyPickaxe(
         service.appendTooltip(stack, tooltip)
     }
 
+    override fun getName(stack: ItemStack): Text {
+        val txt =  super.getName(stack).string
+        return Text.literal("$txt ${service.getNameSuffix(stack)}")
+    }
+
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
         super.use(world, user, hand)
         return service.use(world, user, hand)

@@ -25,6 +25,9 @@ class CopperItems {
         @AutoRegister("copper_hoe")
         var copper_hoe = CopperHastyHoe(COPPERITE, 1, -2.8f, Item.Settings())
 
+        @AutoRegister("copper_book")
+        var copper_book = CopperBook(Item.Settings().maxCount(1))
+
         fun isCopperItem(item: Item): Boolean {
             return item is ThunderAppealedSword || item is CopperHastyPickaxe || item is CopperHastyShovel || item is CopperHastyAxe
         }
