@@ -2,7 +2,6 @@ package com.pashmi.commands
 
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.CommandDispatcher
-import com.mojang.brigadier.tree.LiteralCommandNode
 import com.pashmi.achievements.StateSaverAndLoader
 import com.pashmi.utils.logger
 import com.pashmi.utils.toMinecraftCopper
@@ -19,11 +18,10 @@ class CopperCountCommand {
 
         fun register(dispatcher: CommandDispatcher<ServerCommandSource>) {
 
-            val copperCount: LiteralCommandNode<ServerCommandSource> = dispatcher.register(CommandManager.literal(COPPER_COUNT)
+            val copperCount = dispatcher.register(CommandManager.literal(COPPER_COUNT)
                 .executes { ctx ->
                     copperScoreBoard(ctx.source)
                 })
-            dispatcher.register(CommandManager.literal("copperscoreboard").redirect(copperCount))
             dispatcher.register(CommandManager.literal("csb").redirect(copperCount))
         }
 

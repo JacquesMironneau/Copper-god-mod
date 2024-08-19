@@ -35,7 +35,7 @@ public abstract class LightningRodBlockMixin extends AbstractBlock {
     }
 
     @Inject(method
-            = "Lnet/minecraft/block/LightningRodBlock;onBlockAdded(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;Z)V",
+            = "onBlockAdded(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;Z)V",
             at = @At("TAIL"))
     public void pashmi_onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify, CallbackInfo ci) {
         BlockPattern.Result result = CopperGodStructureService.Companion.getCopperGodOratory().searchAround(world, pos);
@@ -44,12 +44,9 @@ public abstract class LightningRodBlockMixin extends AbstractBlock {
         }
     }
 
-    @Inject(method= "Lnet/minecraft/block/LightningRodBlock;onStateReplaced(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;Z)V",
-    at=@At("TAIL"))
+    @Inject(method = "onStateReplaced(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;Z)V",
+            at = @At("TAIL"))
     public void pashmi_onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved, CallbackInfo ci) {
-//        BlockPattern.Result result = CopperGodStructureService.Companion.getCopperGodOratory().searchAround(world, pos);
-//        if (result != null) {
-            CopperGodStructureService.Companion.destroyOratory(world, pos);
-//        }
+        CopperGodStructureService.Companion.destroyOratory(world, pos);
     }
 }

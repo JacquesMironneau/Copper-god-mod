@@ -24,10 +24,6 @@ class CustomBookScreen(private val itemStack: ItemStack) : BookScreen() {
 
     }
 
-    //    @Override
-    //    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-    //        super.render(context, mouseX, mouseY, delta);
-    //    }
     private fun setDefaultText(book: ItemStack) {
 
         val nbt = book.getOrCreateNbt()

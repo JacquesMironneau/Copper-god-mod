@@ -1,6 +1,5 @@
 package com.pashmi.achievements
 
-import com.pashmi.CopperGodMod.MOD_ID
 import com.pashmi.CopperGodMod.toModId
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
@@ -8,7 +7,6 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.block.Blocks
 import net.minecraft.network.PacketByteBuf
-import net.minecraft.util.Identifier
 
 
 class CopperOreBreakCounter {
@@ -16,7 +14,7 @@ class CopperOreBreakCounter {
     companion object {
         val INITIAL_SYNC = "initial_sync".toModId()
         val OPEN_CUSTOM_BOOK_SCREEN = "copper_book".toModId()
-        val ID = Identifier(MOD_ID, "copper_ore_break_counter")
+        val ID = "copper_ore_break_counter".toModId()
 
         fun initializeCopperOreCounter() {
             ServerPlayConnectionEvents.JOIN.register { handler, sender, server ->

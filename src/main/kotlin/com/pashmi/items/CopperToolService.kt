@@ -17,7 +17,7 @@ import kotlin.math.abs
 
 private const val NBT_CHARGE_LEVEL = "${MOD_ID}_charge_level"
 private const val ADVANCEMENT_PATH = "$MOD_ID/got_64_copper_ingot"
-private const val WORTHINESS_LEVEL = 5
+private const val WORTHINESS_LEVEL = 64
 
 object CopperToolService {
 

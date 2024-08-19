@@ -36,7 +36,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                     Items.RAW_COPPER,
                     Text.translatable("advancement.pashmi-copper-god.got-copper.title"),
                     Text.translatable("advancement.pashmi-copper-god.got-copper.description"),
-                    Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+                    Identifier("textures/gui/advancements/backgrounds/adventure.png"),
                     AdvancementFrame.TASK,
                     true,
                     true,
@@ -64,7 +64,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                     Items.COPPER_INGOT,
                     Text.translatable("advancement.pashmi-copper-god.got-copper-stack.title"),
                     Text.translatable("advancement.pashmi-copper-god.got-copper-stack.description"),
-                    Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+                    Identifier("textures/gui/advancements/backgrounds/adventure.png"),
                     AdvancementFrame.TASK,
                     true,
                     true,
@@ -92,7 +92,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                     Items.COPPER_BLOCK,
                     Text.translatable("advancement.pashmi-copper-god.got-copper-block-stack.title"),
                     Text.translatable("advancement.pashmi-copper-god.got-copper-block-stack.description"),
-                    Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+                    Identifier("textures/gui/advancements/backgrounds/adventure.png"),
                     AdvancementFrame.TASK,
                     true,
                     true,
@@ -119,7 +119,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                     CopperItems.copper_sword,
                     Text.translatable("advancement.pashmi-copper-god.got-copper-sword.title"),
                     Text.translatable("advancement.pashmi-copper-god.got-copper-sword.description"),
-                    Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+                    Identifier("textures/gui/advancements/backgrounds/adventure.png"),
                     AdvancementFrame.TASK,
                     true,
                     true,
@@ -136,7 +136,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                     CopperItems.copper_pickaxe,
                     Text.translatable("advancement.pashmi-copper-god.got-copper-pickaxe.title"),
                     Text.translatable("advancement.pashmi-copper-god.got-copper-pickaxe.description"),
-                    Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+                    Identifier("textures/gui/advancements/backgrounds/adventure.png"),
                     AdvancementFrame.TASK,
                     true,
                     true,
@@ -154,7 +154,7 @@ class CopperAdvancementsDataGenerator : DataGeneratorEntrypoint {
                     CopperGodBlocks.cu_diamond,
                     Text.translatable("advancement.pashmi-copper-god.got-cu-diamond.title"),
                     Text.translatable("advancement.pashmi-copper-god.got-cu-diamond.description"),
-                    Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+                    Identifier("textures/gui/advancements/backgrounds/adventure.png"),
                     AdvancementFrame.TASK,
                     true,
                     true,

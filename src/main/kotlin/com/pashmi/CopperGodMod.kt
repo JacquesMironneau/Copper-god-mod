@@ -37,11 +37,6 @@ object CopperGodMod : ModInitializer {
         }
 
         CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
-            TeleportCommand.register(dispatcher)
-            FeedCommand.register(dispatcher)
-            HomeCommand.register(dispatcher)
-            EnderChestCommand.register(dispatcher)
-            LocateClosestCommand.register(dispatcher)
             CopperCountCommand.register(dispatcher)
         }
 
